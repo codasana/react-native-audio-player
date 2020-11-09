@@ -49,6 +49,30 @@ export default class Player extends Component {
   }
 
   onBack() {
+    if (this.state.currentPosition < 10 ) {
+      this.refs.audioElement && this.refs.audioElement.seek(0);
+      this.setState({
+        currentPosition: 0,
+        paused: false,
+      });
+    } else {
+      this.refs.audioElement && this.refs.audioElement.seek(this.state.currentPosition - 10);
+      this.setState({
+        currentPosition: this.state.currentPosition - 10,
+        paused: false,
+      });
+    }
+
+  }
+
+  onForward() {
+    this.refs.audioElement && this.refs.audioElement.seek(this.state.currentPosition + 10);
+    this.setState({
+      currentPosition: this.state.currentPosition + 10,
+      paused: false,
+    });
+  }
+  /*onBack() {
     if (this.state.currentPosition < 10 && this.state.selectedTrack > 0) {
       this.refs.audioElement && this.refs.audioElement.seek(0);
       this.setState({ isChanging: true });
@@ -79,7 +103,7 @@ export default class Player extends Component {
         selectedTrack: this.state.selectedTrack + 1,
       }), 0);
     }
-  }
+  }*/
 
   _handleUpdate = user => {
     // Do something with user object
@@ -111,7 +135,7 @@ export default class Player extends Component {
           onSlidingStart={() => this.setState({paused: true})}
           currentPosition={this.state.currentPosition} />
         <Controls
-          forwardDisabled={this.state.selectedTrack === this.props.tracks.length - 1}
+          //forwardDisabled={this.state.selectedTrack === this.props.tracks.length - 1}
           onPressShuffle={() => this.setState({shuffleOn: !this.state.shuffleOn})}
           onPressPlay={() => this.setState({paused: false})}
           onPressPause={() => this.setState({paused: true})}

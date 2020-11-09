@@ -29,7 +29,9 @@ function AnotherAudioScreen({ navigation }) {
 
   return (
     <View style={{ flex: 1, justifyContent: 'center',backgroundColor: '#fff' }}>
+    <Text style={{margin:20,}}>If you came here from the Home audio screen, that audio should have stopped playing.</Text>
       <Player tracks={TRACKS} paused={audiostatus}/>
+      <Text style={{margin:20,}}>Pressing any of the following buttons should pause this audio, but it doesn't. The primary issue.</Text>
       <Button
         title="Go to Screen Without Audio"
         onPress={() => navigation.navigate('No Audio Screen')}

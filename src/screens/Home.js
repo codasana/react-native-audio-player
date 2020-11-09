@@ -26,6 +26,7 @@ function HomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1, justifyContent: 'center',backgroundColor: '#fff' }}>
       <Player tracks={TRACKS} paused={audiostatus}/>
+      <Text style={{margin:20,}}>Pressing any of the following buttons should pause the audio, but it doesn't. The primary issue.</Text>
       <Button
         title="Go to Screen Without Audio"
         onPress={() => navigation.navigate('No Audio Screen')}
